@@ -1,7 +1,7 @@
 {
   "name": "Z950",
   "manufacturer": "Keebz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "format": "vst2",
   "kind": "effect",
   "uid": "KhRP",
@@ -12,6 +12,6 @@
   "file64": "VST/z950-arm64.so",
   "description": "Z950: a live S1000-style time stretch / pitch shift with a CD-deck cue, scrub wheel and tempo-matched looper for the Akai MPC.",
   "author": "Keebz",
-  "url": "",
+  "url": "https://github.com/keebz/Z950",
   "license": "MIT"
 }
