@@ -376,6 +376,8 @@ public:
         const int    aheadMargin = (useSearch ? wCap : 0) + 64;           // the search looks this far ahead of the read head
         const double lag0      = (double)(aheadMargin + 64);              // distance behind the live input when the stretch starts
         const double lagCap    = (double)(ringSize_ - guard_ - 4);
+        const bool   lagTrig   = pitchOn && spliceOn && !looping_;        // live pitch shift: splices are triggered by the lag (see the splice block)
+        const double trigLag   = (double)aheadMargin + 128.0 + (useSearch ? (double)(lagCache_ > 0 ? lagCache_ : lMax) : (double)cycleFixed);
         const int    searchEvery = (int)std::lround(350.0 * ks);
 
         const int    rateHz    = getInt(kRate);
@@ -685,7 +687,7 @@ public:
                         if (lag < (double)aheadMargin || lag > lagCap)         // too close to the input / out of buffer: re-sync to live
                         {
                             if (xfPos_ < xfLen_) anaPos_ = hB_;
-                            hB_ = (double)writeAbs_ - lag0;
+                            hB_ = (double)writeAbs_ - (lagTrig ? trigLag + 64.0 : lag0);
                             xfPos_ = 0; xfLen_ = 256; xfRho_ = 1.0f;
                         }
                     }
@@ -694,8 +696,13 @@ public:
                 // --- the splice: every D output samples jump back one cycle L and crossfade over min((WIDTH+1) L, D) ---
                 if (spliceOn && !cueOn_ && !vsOnly)
                 {
-                    evCount_ -= 1.0;
-                    if (evCount_ <= 0.0)
+                    // Pitch on (live): the heads run faster than the input, so they must splice back before they reach it. Timing the splice by
+                    // the count of output samples (D / q) lets a long crossfade run into the live signal and be snapped back over and over
+                    // (static). Time it by the lag instead: splice when the head is within one cycle (plus the crossfade drift) of the margin.
+                    bool fire;
+                    if (lagTrig && !looping_) fire = xfPos_ >= xfLen_ && ((double)writeAbs_ - anaPos_) <= trigLag;
+                    else { evCount_ -= 1.0; fire = evCount_ <= 0.0; }
+                    if (fire)
                     {
                         if (xfPos_ < xfLen_) { anaPos_ = hB_; xfPos_ = xfLen_; }
                         int L = cycleFixed;
@@ -712,7 +719,13 @@ public:
                         const double X = std::min((double)widthMul * (double)L, D);
                         hB_ = anaPos_ - (double)L;                               // jump back one cycle
                         if (looping_) hB_ = wrapLoop(hB_);
-                        xfLen_ = std::max(1, (int)std::lround(X / q));
+                        double Xuse = X;
+                        if (lagTrig && !looping_)       // stream A keeps running towards the live input during the fade: keep it clear of the margin
+                        {
+                            const double room = ((double)writeAbs_ - anaPos_) - (double)aheadMargin - 16.0;
+                            Xuse = std::min(X, std::max(32.0, room * q / (q - 1.0)));
+                        }
+                        xfLen_ = std::max(1, (int)std::lround(Xuse / q));
                         // How alike are the two streams over the crossfade? Alike (a well matched cycle): a plain linear fade keeps the level.
                         // Unlike (noise, a transient): a linear fade dips about 3 dB in the middle, so those get an equal-power fade.
                         {
