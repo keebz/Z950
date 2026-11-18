@@ -542,7 +542,7 @@ def main():
     D.step(4, "Bring LENGTH back to 100 and you snap straight back to the live signal, so your sequence stays in time.")
     D.image(f_punch, width=800, caption="Held Length falls behind live; releasing it snaps back")
     D.p("Tip: put LENGTH on a pad (Q-Link edit, pad pressure or X/Y) or on a Q-Link and play it like an instrument. While the stretch is working "
-        "the sound is about 50 to 60 ms behind live; at 100% there is no delay.", size=21, color=GREY)
+        "the sound is about 50 to 60 ms behind live; at 100% there is no delay. With PITCH on it is about 25 to 90 ms late.", size=21, color=GREY)
     D.new_page()
     D.h2("CYCLIC or INTELL: the MODE key (small key under POWER)")
     D.image(figs["cyclic_top"], width=820, caption="CYCLIC mode: Cyclic is live, Qual and Width are greyed out")
@@ -623,7 +623,7 @@ def main():
     D.bullet("Nothing happens when I turn things: LENGTH must be above 100 to stretch. At 100, with Bit at 24 and Rate at 44100, the sound passes through untouched.")
     D.bullet("Qual or Width do nothing: they work only in INTELL mode (MODE key outlined red) and only while LENGTH is above 100.")
     D.bullet("The first knob reads CLEAN or ORIG instead of a number: that is INTELL mode (it picks the cycle itself). Press the MODE key to go back to CYCLIC.")
-    D.bullet("The sound is a little late while stretching: that is normal, about 50 to 60 ms. At LENGTH 100 there is no delay.")
+    D.bullet("The sound is a little late while stretching: that is normal, about 50 to 60 ms. At LENGTH 100 there is no delay. With PITCH on the delay is about 25 to 90 ms.")
     D.bullet("The loop disappeared: a loop stopped for more than about 40 seconds has left the memory and cannot be restarted. Press PUNCH IN to make a new one.")
     D.bullet("The touch strip does nothing: see \"Using the touch strip as the scrub wheel\". Use Crossfader mode and assign the Jog parameter to it.")
     D.h2("Limits")

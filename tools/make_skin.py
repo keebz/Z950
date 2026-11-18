@@ -774,7 +774,7 @@ HELP1 = [
     ("FILTER  (red knob)", "The Akai S900/S950 low-pass, 1:1, last in the chain so it also tames the aliasing of BIT and RATE. The S950's filter chip is a 6th-order "
      "Butterworth (-36 dB per octave) with NO resonance, and so is this. The knob uses the S950's own 0-99 scale and cutoff law, read from its ROM: from 0 to about "
      "22 the cutoff sits at 314 Hz, from 22 to 80 it sweeps six octaves up to 20 kHz in the S950's clock-divider steps, above 80 it is open (out of the circuit)."),
-    ("PITCH  (key)", "On: Length shifts the PITCH instead (stretch, then resample, like an S-series). 200% = one octave up, same duration. The PITCH header is greyed while it is off."),
+    ("PITCH  (key)", "On: Length shifts the PITCH instead (stretch, then resample, like an S-series). 200% = one octave up, same duration. It adds a small delay (about 25-90 ms). The PITCH header is greyed while it is off."),
     FINE,
 ]
 HELP2 = [
