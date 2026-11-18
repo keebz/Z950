@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/readme/badge.png" alt="KEEBZ950" width="640">
+<img src="docs/readme/badge_panel.png" alt="KEEBZ950" width="640">
 
 # Z950
 
