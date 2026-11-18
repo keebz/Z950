@@ -749,7 +749,7 @@ def build_qlinks():
 FINE = ("FINE TUNING", "Hold SHIFT while turning a Q-Link (or the main encoder) to change a value in finer steps. It helps most on LENGTH "
         "(especially with PITCH on), CYCLIC, RATE, FILTER and the JOG wheel.")
 HELP1 = [
-    ("WHAT IT DOES", "An insert effect. Put it on a track and play audio through it: it records the live input and can stretch it (time stretch "
+    ("WHAT IT DOES", "An insert effect. Put it on any track, or use it as a sampler FX on live audio input, and play audio through it: it records the live input and can stretch it (time stretch "
      "like an Akai S-series sampler), loop it, or cue / scrub it like a CD deck. With Length 100, Bit 24, Rate 44100, Cue off and no loop the "
      "audio passes through untouched, with no delay."),
     ("POWER  (key, top left)", "Pressing it takes the plugin out of the circuit: the audio passes straight through, with no delay and no effect, and any loop is dropped. "

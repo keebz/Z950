@@ -25,7 +25,7 @@
 
 ## What it is
 
-Z950 is an **insert effect**: put it on a track and play audio through it. It records the live input and can
+Z950 is an **insert effect**: put it on any track, or use it as a sampler FX on live audio input, and play audio through it. It records the live input and can
 
 - **stretch** it like an Akai S1000 (CYCLIC and INTELL modes) &mdash; longer and slower with no pitch change, then snap back to live;
 - **shift pitch** the S-series way (stretch, then resample);
@@ -64,7 +64,7 @@ Get the files from the **[Releases page](https://github.com/keebz/Z950/releases)
    <p align="center"><img src="docs/readme/install.png" alt="Only the Keebz - VST - Z950 folder is added to VST2 Plugins" width="620"></p>
 
 4. **Put the drive back** in the MPC (or mount the internal drive) and let it rescan.
-5. **Use it.** On a track, add an insert effect and choose **Z950** from the Keebz plugins. Press the **HELP** key in the
+5. **Use it.** On any track, add an insert effect and choose **Z950** from the Keebz plugins. It also works as a sampler FX on live audio input. Press the **HELP** key in the
    plugin for the on-screen guide, or read the Quick Start PDF.
 
 To remove it, delete the `Keebz - VST - Z950` folder from `VST2 Plugins`.

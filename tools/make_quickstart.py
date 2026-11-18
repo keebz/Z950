@@ -443,7 +443,7 @@ def main():
     D.image(figs["hero"], caption="The Z950 screen (a picture of the design: fonts on the MPC differ slightly)")
     D.box("REQUIREMENTS",
           "An Akai MPC running MPC OS 3.10.1 or later, with Preferences > Enhancements (Beta) > Enable Enhancements and External Plugin Support turned on. "
-          "Z950 is an insert effect: it stretches the audio that plays through the track it is inserted on. It was made and tested on the MPC Live III. "
+          "Z950 is an insert effect: it stretches the audio that plays through the track it is inserted on. It works on any track, and also as a sampler FX on live audio input. It was made and tested on the MPC Live III. "
           "Other MPC models that run external plugins should load it but are untested.", fill=(235, 244, 255), edge=(60, 110, 190))
     D.box("EXPERIMENTAL - PROVIDED \"AS IS\"",
           "Z950 is experimental software, provided \"AS IS\", without warranty of any kind, express or implied. You use it entirely at your own risk. "
@@ -467,7 +467,8 @@ def main():
     D.image(f_install, width=640, caption="Z950 sits next to your other plugins. Nothing else is touched.")
     D.h2("Switch it on in the MPC")
     D.step(1, "On the MPC open Preferences > Enhancements (Beta) and turn on Enable Enhancements and External Plugin Support. Read the warning. The plugin stays hidden until both are on.")
-    D.step(2, "On the track whose audio you want to stretch, add an insert effect: the browser lists External Plugins > Z950 (by Keebz). Play audio through the track: with every control at its starting value the sound passes through untouched, with no delay.")
+    D.step(2, "On the track whose audio you want to stretch, add an insert effect: the browser lists External Plugins > Z950 (by Keebz). Play audio through the track: with every control at its starting value the sound passes through untouched, with no delay. "
+           "It works on any track, and you can also use it as a sampler FX on live audio input.")
 
     # ---- the screen --------------------------------------------------------------------------------------------------
     D.new_page()
