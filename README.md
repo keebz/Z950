@@ -1,13 +1,104 @@
+<div align="center">
+
+<img src="docs/readme/badge.png" alt="KEEBZ950" width="640">
+
 # Z950
 
-(by Keebz)
+**Live S-series time stretch, S950 filter, CD-deck cue/scrub and looper &mdash; an insert effect for Akai MPC**
 
-Insert effect for Akai MPC: live S-series style time stretch / pitch shift (Akai S1000/S3000 rack samplers, the 90s jungle sound),
-a CD-deck Cue / Jog scrub and a tempo-matched Punch In / Punch Out looper. The screen is styled after an Akai S950 front panel,
-and a HELP tab on the plugin explains every control.
+[![Release](https://img.shields.io/badge/release-v1.0%20pre--release-orange)](https://github.com/keebz/Z950/releases)
+[![Licence](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
+[![Platform](https://img.shields.io/badge/MPC%20OS-3.10.1%2B-lightgrey)](#requirements)
+[![Tested](https://img.shields.io/badge/tested-MPC%20Live%20III-green)](#requirements)
 
-Requires MPC OS 3.10.1+ with Preferences > Enhancements (Beta) > Enable Enhancements + External Plugin Support.
-Experimental, provided AS IS. Built with the inMusic MPC Plugin SDK (MIT). Original code, not affiliated with Akai.
+</div>
+
+<img src="docs/readme/disclaimer.png" alt="Experimental software, provided AS IS. Use at your own risk." width="100%">
+
+> [!CAUTION]
+> **Z950 is experimental software, provided "AS IS", without warranty of any kind, express or implied.**
+> You use it entirely at your own risk. It was made and tested on an **MPC Live III** only; other MPC models that run
+> external plugins should load it but are untested. Not affiliated with, endorsed by or connected to Akai Professional
+> or inMusic. All code is original; no Akai code or data is included.
+
+<p align="center"><img src="docs/readme/hero.png" alt="The Z950 screen" width="900"></p>
+
+## What it is
+
+Z950 is an **insert effect**: put it on a track and play audio through it. It records the live input and can
+
+- **stretch** it like an Akai S1000 (CYCLIC and INTELL modes) &mdash; longer and slower with no pitch change, then snap back to live;
+- **shift pitch** the S-series way (stretch, then resample);
+- **crunch** it with 8 / 12 / 16 / 24-bit and sample-rate reduction, then pass it through a **1:1 S900/S950 low-pass filter**;
+- **loop** it with Punch In / Punch Out, cut the loop in note fractions, and change its speed like a turntable;
+- **cue and scrub** it like a CD deck.
+
+The touch screen is styled after an Akai S950 front panel, and a two-page HELP tab inside the plugin explains every control.
+With every control at its start value the audio passes through untouched, with no delay.
+
+## Downloads
+
+Get the files from the **[Releases page](https://github.com/keebz/Z950/releases)**:
+
+| File | What it is |
+|---|---|
+| `Keebz - Z950 v1_0.zip` | The plugin &mdash; the folder you copy to your drive |
+| `Z950 Quick Start.pdf` | The Quick Start guide (10 pages, also in this repo) |
+
+## Requirements
+
+- An Akai MPC running **MPC OS 3.10.1 or later** (tested on the **MPC Live III**; other models untested)
+- An SD card or USB drive, or the MPC's internal drive in computer mode, and a computer to copy the files
+- **External Plugin Support** switched on (step 1 below)
+
+## Installation
+
+1. **Enable external plugins on the MPC.** Open *Preferences > Enhancements (Beta)* and switch on
+   **Enable Enhancements** and **External Plugin Support**. Restart the MPC if it asks.
+2. **Download and unzip** `Keebz - Z950 v1_0.zip`. It holds one folder, `VST2 Plugins`, which holds one folder,
+   `Keebz - VST - Z950`.
+3. **Merge, do not replace.** If your drive already has a `VST2 Plugins` folder, open it and copy **only** the
+   `Keebz - VST - Z950` folder into it. Replacing your existing `VST2 Plugins` folder would remove your other plugins.
+   Keep the folder name exactly as it is.
+
+   <p align="center"><img src="docs/readme/install.png" alt="Only the Keebz - VST - Z950 folder is added to VST2 Plugins" width="620"></p>
+
+4. **Put the drive back** in the MPC (or mount the internal drive) and let it rescan.
+5. **Use it.** On a track, add an insert effect and choose **Z950** from the Keebz plugins. Press the **HELP** key in the
+   plugin for the on-screen guide, or read the Quick Start PDF.
+
+To remove it, delete the `Keebz - VST - Z950` folder from `VST2 Plugins`.
+
+## Quick tour
+
+<p align="center"><img src="docs/readme/annot.png" alt="Numbered controls" width="900"></p>
+
+| # | Control | # | Control |
+|---|---|---|---|
+| 1 | Power | 11 | Pitch on/off |
+| 2 | Mode: CYCLIC / INTELL | 12 | Cue |
+| 3 | Display | 13 | Scrub (jog) wheel |
+| 4 | Cyclic / Style | 14 | Punch In |
+| 5 | Length | 15 | Punch Out |
+| 6 | Qual | 16 | Stop / Start |
+| 7 | Width | 17 | Loop tempo |
+| 8 | Bit | 18 | Loop dial |
+| 9 | Rate | 19 | Speed |
+| 10 | Filter | | |
+
+**Stretch it:** raise **Length** above 100 (the red knob). 200 = twice as long, up to 2000. Bring it back to 100 and you are
+live again. Put Length on a pad or a Q-Link and play it like an instrument.
+
+<p align="center"><img src="docs/readme/intell.png" alt="INTELL mode" width="760"></p>
+
+**INTELL mode** (press the small Mode key; its outline turns red) searches for the best cycle itself, which usually sounds
+smoother. The first knob becomes the ORIG / CLEAN style; Qual and Width come alive.
+
+**Loop it:** Punch In marks the start, Punch Out marks the end and starts the loop. Turn the loop dial to cut it to 1/2 ... 1/64.
+
+<p align="center"><img src="docs/readme/loop.png" alt="Looper" width="640"></p>
+
+## Controls in detail
 
 | Control | Does |
 |---|---|
@@ -46,10 +137,6 @@ from scratch; no Akai code or data is included.
 - The comparison window is capped at 2048 samples (the firmware's is 16384) to keep latency down; the stretch starts about 50-60 ms behind live.
 - The skin is generated by `tools/make_skin.py` (Pillow) into `skins/`.
 
-By Keebz  -  Keebz.com  -  Instagram: @LeeKebler  -  Github: Github.com/Keebz
-
-Licence: MIT. SDK credit: https://github.com/inmusic-software/mpc-plugin-builder-sdk
-
 ## INTELL notes
 
 The INTELL search follows the Akai S1000 v4.4 ROM: lags 40..2000 samples at 44.1 kHz, 2 x (QUAL+1) comparison points, a window of
@@ -58,3 +145,21 @@ min((WIDTH+1) x L, D) samples. Two differences are there for live use (the compa
 lag is searched about every 8 ms). One is an addition: the ROM's raw difference sum favours the shortest lag on sounds without
 a clear pitch (hi-hats, drum breaks), which turns the splice into a continuous 1 ms comb filter ("washy"). When the search ends on
 the shortest lags it is repeated for lags of at least 5 ms.
+
+## Credits and licence
+
+By **Keebz** &mdash; [Keebz.com](https://Keebz.com) &middot; Instagram [@LeeKebler](https://instagram.com/LeeKebler) &middot; [GitHub](https://github.com/Keebz)
+
+Licence: [MIT](LICENSE). Built with the [inMusic MPC Plugin SDK](https://github.com/inmusic-software/mpc-plugin-builder-sdk)
+(MIT); see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Original code, not affiliated with Akai. The stretch and filter
+behaviour (algorithms and constants) was worked out by studying the S1000 and S950 firmware; the code is written from scratch and
+no Akai code or data is included.
+
+## Build from source
+
+```bash
+python3 tools/make_skin.py          # regenerate the skin (Pillow)
+python3 tools/make_quickstart.py    # regenerate the Quick Start PDF
+```
+
+The plugin itself is built with the SDK (`python3 tools/build.py plugins/Z950` in the SDK checkout); the source is `src/DeepStretch.cpp` (the internal class name predates the Z950 rename).
