@@ -13,6 +13,8 @@
 
 </div>
 
+<p align="center"><img src="docs/readme/hero.png" alt="The Z950 screen" width="900"></p>
+
 <img src="docs/readme/disclaimer.png" alt="Experimental software, provided AS IS. Use at your own risk." width="100%">
 
 > [!CAUTION]
@@ -20,8 +22,6 @@
 > You use it entirely at your own risk. It was made and tested on an **MPC Live III** only; other MPC models that run
 > external plugins should load it but are untested. Not affiliated with, endorsed by or connected to Akai Professional
 > or inMusic. All code is original; no Akai code or data is included.
-
-<p align="center"><img src="docs/readme/hero.png" alt="The Z950 screen" width="900"></p>
 
 ## What it is
 
